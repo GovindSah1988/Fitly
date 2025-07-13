@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import FoundationModels
 
 @main
 struct FitlyApp: App {
@@ -23,9 +24,12 @@ struct FitlyApp: App {
         }
     }()
 
+    @State private var languageModelManager = LanguageModelManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(languageModelManager: languageModelManager)
+                .environment(languageModelManager)
         }
         .modelContainer(sharedModelContainer)
     }
