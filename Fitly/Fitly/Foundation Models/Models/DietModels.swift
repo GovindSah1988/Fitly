@@ -1,5 +1,5 @@
 //
-//  MealResponse.swift
+//  DietModels.swift
 //  Fitly
 //
 //  Created by Govind Sah on 13/07/25.

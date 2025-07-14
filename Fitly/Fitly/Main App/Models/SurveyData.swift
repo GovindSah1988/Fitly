@@ -239,7 +239,7 @@ struct SurveyFlowNavigationView: View {
                     // Here's where the final SurveyView is presented
                     // It gets the composed prompt from the coordinator
                     let generateDietPlanUseCase = DefaultGenerateDietPlanUseCase(languageModelManager: languageModelManager)
-                    SurveyView1(prompt: coordinator.finalPrompt, generateDietPlanUseCase: generateDietPlanUseCase)
+                    DietPlanView1(prompt: coordinator.finalPrompt, generateDietPlanUseCase: generateDietPlanUseCase)
                 }
             }
             .navigationTitle("Welcome")

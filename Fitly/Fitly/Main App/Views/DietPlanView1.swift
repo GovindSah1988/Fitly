@@ -1,5 +1,5 @@
 //
-//  SurveyView1.swift
+//  DietPlanView1.swift
 //  Fitly
 //
 //  Created by Govind Sah on 13/07/25.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct SurveyView1: View {
+struct DietPlanView1: View {
 
     // ViewModel instance, observing its changes
-    @State private var viewModel: SurveyViewModel
+    @State private var viewModel: DietPlanViewModel
 
     // The LanguageModelManager is passed to the ViewModel, not directly accessed by the View's body now.
     // However, since it's an @Environment object, we still need to provide it to the ViewModel.
     @Environment(LanguageModelManager.self) private var languageModelManager
 
-    // Better approach for SurveyView init:
+    // Better approach for DietPlanView init:
     let prompt: String
 
     // **IMPORTANT:** Correct way to inject Environment object into ViewModel init
@@ -25,7 +25,7 @@ struct SurveyView1: View {
     init(prompt: String, generateDietPlanUseCase: GenerateDietPlanUseCase) {
         self.prompt = prompt
         _viewModel = State(
-            initialValue: SurveyViewModel(
+            initialValue: DietPlanViewModel(
                 prompt: prompt,
                 generateDietPlanUseCase: generateDietPlanUseCase
             )
@@ -37,20 +37,22 @@ struct SurveyView1: View {
             BackgroundGradientView() // Modularized background
 
             ScrollView {
-                VStack {
-                    ReportButtonSection(
-                        action: {
-                            Task {
-                                await viewModel.generateReport()
-                            }
-                        },
-                        isLoading: viewModel.isLoading
-                    )
-                    // Disable the button based on viewModel.isGenerating
-                    .disabled(viewModel.isGenerating)
+                
+                ReportButtonSection(
+                    action: {
+                        Task {
+                            await viewModel.generateReport()
+                        }
+                    },
+                    isLoading: viewModel.isLoading
+                )
+                // Disable the button based on viewModel.isGenerating
+                .disabled(viewModel.isGenerating)
+
+                VStack(alignment: .leading, spacing: 20) {
 
                     if viewModel.isLoading {
-                        ProgressView("Generating Report...")
+                        ProgressView("Generating Diet Planning Report...")
                             .padding()
                     } else if let error = viewModel.error {
                         Text("Error: \(error)")

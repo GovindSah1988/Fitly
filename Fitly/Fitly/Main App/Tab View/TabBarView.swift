@@ -131,8 +131,12 @@ struct SettingsView: View {
 struct MainView: View {
     @State private var selectedTab: Tab = .home // State to manage the currently selected tab
 
-    @State var prompt = "Find the diet plan for a male of 35 years of age whose body weight is 79.5 kg, skeletal muscle mass is 33.5 kg, and Body Fat Mass is 20.2 kg, body fat percentage is 25.4%, whose BMI is 26.9 and BMR is 1651 calories per day, Visceral Fat Level is 9. target weight is 69.8 kg"
-    
+    @State var dietPrompt = "Find the diet plan for a male of 35 years of age whose body weight is 79.5 kg, skeletal muscle mass is 33.5 kg, and Body Fat Mass is 20.2 kg, body fat percentage is 25.4%, whose BMI is 26.9 and BMR is 1651 calories per day, Visceral Fat Level is 9. target weight is 69.8 kg"
+
+    @State var excercisePrompt = "What physical activities should someone do to stay healthy, and fit and strong for a male of 35 years of age whose body weight is 79.5 kg, skeletal muscle mass is 33.5 kg, and Body Fat Mass is 20.2 kg, body fat percentage is 25.4%, whose BMI is 26.9 and BMR is 1651 calories per day, Visceral Fat Level is 9. target weight is 69.8 kg. "
+
+    @State var workoutPrompt = "Find the workout plan for a male of 35 years of age whose body weight is 79.5 kg, skeletal muscle mass is 33.5 kg, and Body Fat Mass is 20.2 kg, body fat percentage is 25.4%, whose BMI is 26.9 and BMR is 1651 calories per day, Visceral Fat Level is 9. target weight is 69.8 kg. What workout should I do different day a week to help achieve this and yet stay healthy, and fit and strong"
+
     let languageModelManager: LanguageModelManager // Inject here
 
     var body: some View {
@@ -142,14 +146,20 @@ struct MainView: View {
                 switch selectedTab {
                 case .home:
                     let generateDietPlanUseCase = DefaultGenerateDietPlanUseCase(languageModelManager: languageModelManager)
-                    SurveyView1(prompt: prompt, generateDietPlanUseCase: generateDietPlanUseCase)
-                        .navigationTitle("Survey")
+                    DietPlanView1(prompt: dietPrompt, generateDietPlanUseCase: generateDietPlanUseCase)
+                        .navigationTitle("DietPlan")
                 case .search:
-                    SearchView()
+                    let generateExcercisePlanUseCase = DefaultGenerateExercisePlanUseCase(languageModelManager: languageModelManager)
+                    ExercisePlanView1(prompt: excercisePrompt, excercisePlanUserCase: generateExcercisePlanUseCase)
+                        .navigationTitle("ExcercisePlan")
                 case .profile:
-                    ProfileView()
+                    let generateWorkoutPlanUseCase = DefaultGenerateWorkoutPlanUseCase(languageModelManager: languageModelManager)
+                    WorkoutPlanView(prompt: workoutPrompt, useCase: generateWorkoutPlanUseCase)
+                        .navigationTitle("WorkoutPlan")
                 case .settings:
-                    SettingsView()
+                    let generateExcercisePlanUseCase = DefaultGenerateExercisePlanUseCase(languageModelManager: languageModelManager)
+                    ExerciseSuggestionView(prompt: excercisePrompt, excercisePlanUserCase: generateExcercisePlanUseCase)
+                        .navigationTitle("ExcercisePlan")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure content fills the screen

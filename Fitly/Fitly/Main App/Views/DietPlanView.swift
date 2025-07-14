@@ -1,5 +1,5 @@
 //
-//  SurveyView.swift
+//  DietPlanView.swift
 //  Fitly
 //
 //  Created by Govind Sah on 12/07/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SurveyView: View {
+struct DietPlanView: View {
     
     @Environment(LanguageModelManager.self) var languageModelManager
 
