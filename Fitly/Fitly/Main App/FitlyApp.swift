@@ -28,8 +28,9 @@ struct FitlyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainView(languageModelManager: languageModelManager)
-                .environment(languageModelManager)
+//            MainView(languageModelManager: languageModelManager)
+//                .environment(languageModelManager)
+            RootView()
         }
         .modelContainer(sharedModelContainer)
     }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let timerDuration: Double = 1.0
+
 struct TypingTextView: View {
     let fullText: String
     let typingSpeed: Double // characters per second
@@ -32,7 +34,7 @@ struct TypingTextView: View {
         currentIndex = 0
 
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1 / typingSpeed, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: timerDuration / typingSpeed, repeats: true) { _ in
             if currentIndex < fullText.count {
                 let index = fullText.index(fullText.startIndex, offsetBy: currentIndex)
                 displayedText.append(fullText[index])
@@ -47,7 +49,7 @@ struct TypingTextView: View {
 
 struct GrowingText: View {
     var body: some View {
-        TypingTextView(fullText: "Hello, welcome to SwiftUI!", typingSpeed: 15)
+        TypingTextView(fullText: "Hello, welcome to SwiftUI!", typingSpeed: 20)
             .padding()
     }
 }

@@ -77,7 +77,7 @@ struct ExerciseSuggestionDisplayView: View {
     let onTypingComplete: () -> Void
 
     var body: some View {
-        TypingTextView(fullText: exerciseSuggestion.description, typingSpeed: 15) {
+        TypingTextView(fullText: exerciseSuggestion.description, typingSpeed: 20) {
             onTypingComplete()
         }
         .padding()
@@ -106,7 +106,7 @@ struct ExerciseSectionsListView: View {
                         .padding(.bottom, 4)
 
                     ForEach(Array(section.items.enumerated()), id: \.offset) { _, item in
-                        TypingTextView(fullText: item.details, typingSpeed: 15)
+                        TypingTextView(fullText: item.details, typingSpeed: 20)
                             .padding(.leading)
                     }
                 }

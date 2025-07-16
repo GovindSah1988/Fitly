@@ -62,7 +62,7 @@ struct DietPlanView: View {
                     Text("Error: \(error)")
                         .foregroundStyle(.red)
                 } else if let dietSuggestion {
-                    TypingTextView(fullText: dietSuggestion.description, typingSpeed: 15) {
+                    TypingTextView(fullText: dietSuggestion.description, typingSpeed: 20) {
                         mealSuggestions = dietSuggestion.mealSuggestions
                     }
                     .padding()
@@ -81,7 +81,7 @@ struct DietPlanView: View {
                                 Text(suggestion.meal.nameAndCalories)
                                 
                                 ForEach(suggestion.meal.mealItems, id: \.name) { mealItem in
-                                    TypingTextView(fullText: mealItem.nameAndCalory, typingSpeed: 15)
+                                    TypingTextView(fullText: mealItem.nameAndCalory, typingSpeed: 20)
                                         .padding()
 //                                        .overlay(
 //                                            RoundedRectangle(cornerRadius: 2)

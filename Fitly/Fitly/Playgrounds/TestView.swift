@@ -88,5 +88,4 @@ struct ContentView1: View {
 #Playground {
     let session = LanguageModelSession()
     let response = try await session.respond(to: "Tell the capital of Japan")
-    
 }

@@ -57,7 +57,7 @@ struct ExerciseSuggestionView: View {
                     } else if let exerciseSuggestion = viewModel.exerciseSuggestion {
                         TypingTextView(
                             fullText: exerciseSuggestion.description,
-                            typingSpeed: 15
+                            typingSpeed: 20
                         ) {
                             // Reveal sections after description typing
                             withAnimation { showSections = true }
@@ -93,7 +93,7 @@ struct ExerciseSectionCardView: View {
             Text(section.type.description)
                 .font(.title3).bold()
                 .foregroundColor(.accentColor)
-            TypingTextView(fullText: section.sectionDescription, typingSpeed: 15) {
+            TypingTextView(fullText: section.sectionDescription, typingSpeed: 20) {
                 // Reveal items after section description
                 withAnimation { showItems = true }
             }
@@ -127,7 +127,7 @@ struct ExerciseItemView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text("• \(item.name)")
                 .font(.headline)
-            TypingTextView(fullText: item.details, typingSpeed: 12) {
+            TypingTextView(fullText: item.details, typingSpeed: 20) {
                 showDetails = true
             }
             .font(.subheadline)

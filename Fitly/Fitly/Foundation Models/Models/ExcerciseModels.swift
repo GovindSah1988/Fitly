@@ -8,12 +8,6 @@
 import FoundationModels
 
 @Generable
-struct WorkoutSuggestion {
-    @Guide(description: "A desciption of workout plan")
-    var description: String
-}
-
-@Generable
 struct ExerciseSuggestion {
     @Guide(description: "A description of the fitness and exercise plan")
     var description: String
